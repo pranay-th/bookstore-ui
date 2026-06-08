@@ -12,9 +12,5 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
-  ],
-  "env": {
-    "VITE_API_URL":       "@vite_api_url",
-    "VITE_ANALYTICS_URL": "@vite_analytics_url"
-  }
+  ]
 }
