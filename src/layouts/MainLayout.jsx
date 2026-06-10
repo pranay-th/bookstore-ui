@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 /**
- * MainLayout — wraps all public-facing pages.
+ * MainLayout — wraps all app pages with the Navbar and Footer.
  */
 function MainLayout() {
   return (
@@ -26,9 +26,9 @@ function MainLayout() {
             <div>
               <h4 className="text-white font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Browse Books</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">For Authors</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+                <li><a href="/books" className="hover:text-white transition-colors">Browse Books</a></li>
+                <li><a href="/signup" className="hover:text-white transition-colors">For Authors</a></li>
+                <li><a href="/" className="hover:text-white transition-colors">About Us</a></li>
               </ul>
             </div>
             <div>
@@ -42,13 +42,12 @@ function MainLayout() {
             <div>
               <h4 className="text-white font-semibold mb-4">Legal</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Terms & Conditions</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Terms &amp; Conditions</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
               </ul>
             </div>
           </div>
-
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
             <p>&copy; {new Date().getFullYear()} Enterprise Book Store. All rights reserved.</p>
           </div>

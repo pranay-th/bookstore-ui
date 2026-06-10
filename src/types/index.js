@@ -1,43 +1,51 @@
 /**
- * types/index.js — shared shape documentation via JSDoc.
- * No runtime code — pure documentation for IDE autocompletion.
- *
- * TODO: Keep these in sync with the Django serializer fields.
+ * types/index.js — JSDoc type definitions.
+ * Kept in sync with Django serializer fields.
+ * No runtime code — pure IDE documentation.
+ */
+
+/**
+ * Standard API envelope returned by every backend endpoint.
+ * @typedef {Object} APIResponse
+ * @property {{ success: boolean, code: number, message: string }} status
+ * @property {*} data
+ */
+
+/**
+ * Authenticated user stored in Redux after login.
+ * Matches VerifyOTPSerializer response shape.
+ * @typedef {Object} AuthUser
+ * @property {string} id        - UUID
+ * @property {string} email
+ * @property {string} role      - 'CUSTOMER' | 'AUTHOR' | 'ADMIN'
+ * @property {string} full_name
  */
 
 /**
  * @typedef {Object} Book
- * @property {string}   id           - UUID
+ * @property {string}   id
  * @property {string}   title
  * @property {string}   isbn
  * @property {number}   price
- * @property {string}   coverImage
+ * @property {string}   cover_image
  * @property {string[]} authors
  * @property {string[]} categories
+ * @property {string}   language
+ * @property {boolean}  is_active
  */
 
 /**
  * @typedef {Object} CartItem
- * @property {string} id       - UUID
+ * @property {string} id
  * @property {Book}   book
  * @property {number} quantity
- * @property {number} subtotal
  */
 
 /**
  * @typedef {Object} Order
- * @property {string}     id         - UUID
+ * @property {string}     id
  * @property {CartItem[]} items
- * @property {number}     total
- * @property {string}     status     - 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled'
- * @property {string}     createdAt
- */
-
-/**
- * @typedef {Object} UserProfile
- * @property {string} id        - UUID
- * @property {string} firstName
- * @property {string} lastName
- * @property {string} email
- * @property {string} phone
+ * @property {number}     total_amount
+ * @property {string}     status  - 'pending'|'confirmed'|'processing'|'shipped'|'delivered'|'cancelled'
+ * @property {string}     created_at
  */
