@@ -21,8 +21,15 @@ function VerifyEmailPage() {
   useEffect(() => {
     clearError();
 
-    const uid   = searchParams.get('uid');
-    const token = searchParams.get('token');
+    let uid   = searchParams.get('uid');
+    let token = searchParams.get('token');
+
+    // Fallback: some email clients mangle & → &amp; so the param arrives as "amp;token"
+    if (!token) token = searchParams.get('amp;token');
+
+    // Decode any URL-encoded characters in the token (e.g. %2B → +)
+    if (token) token = decodeURIComponent(token);
+    if (uid)   uid   = decodeURIComponent(uid);
 
     if (!uid || !token) {
       setStatus('error');
