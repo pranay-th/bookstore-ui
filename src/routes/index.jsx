@@ -5,7 +5,7 @@ import MainLayout from '../layouts/MainLayout';
 import AuthLayout from '../layouts/AuthLayout';
 import ProtectedRoute from '../components/common/ProtectedRoute';
 
-// ── Public pages ─────────────────────────────────────────────────────────────
+// ── Public pages ──────────────────────────────────────────────────────────────
 const LandingPage            = lazy(() => import('../pages/Landing/LandingPage'));
 const NotFoundPage           = lazy(() => import('../pages/NotFound/NotFoundPage'));
 
@@ -27,16 +27,18 @@ export function AppRoutes() {
   return (
     <Routes>
 
-      {/* ── Auth routes (no navbar) ────────────────────────────────────────── */}
+      {/* ── Auth routes (no navbar) ─────────────────────────────────────────── */}
       <Route element={<AuthLayout />}>
         <Route path="login"               element={<LoginPage />} />
         <Route path="signup"              element={<SignupPage />} />
+        {/* /register is an alias — teammate links point here */}
+        <Route path="register"            element={<SignupPage />} />
         <Route path="verify-otp"          element={<VerifyOTPPage />} />
         <Route path="verify-email"        element={<VerifyEmailPage />} />
         <Route path="resend-verification" element={<ResendVerificationPage />} />
       </Route>
 
-      {/* ── App routes (with navbar) ───────────────────────────────────────── */}
+      {/* ── App routes (with navbar + footer) ──────────────────────────────── */}
       <Route element={<MainLayout />}>
         {/* Public */}
         <Route index element={<LandingPage />} />
