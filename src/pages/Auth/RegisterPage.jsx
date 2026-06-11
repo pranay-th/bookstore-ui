@@ -117,8 +117,12 @@ function RegisterPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        // API returned standardized error response
-        throw new Error(data.details || 'Registration failed');
+        // Extract message from our standard envelope shape
+        throw new Error(
+          data?.status?.message ||
+          data?.details ||
+          'Registration failed. Please try again.'
+        );
       }
 
       // Success - navigate to login with success message
